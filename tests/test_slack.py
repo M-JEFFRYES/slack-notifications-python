@@ -97,11 +97,11 @@ class TestInitialization:
         duplicate_configs = [
             SlackChannelConfig(
                 channel_reference="alerts",
-                channel_webhook_url="https://hooks.slack.com/services/T000/A000/alerts",
+                channel_webhook_url="https://hooks.slack.com/services/T000/FAKEFAKE/alerts",
             ),
             SlackChannelConfig(
                 channel_reference="alerts",
-                channel_webhook_url="https://hooks.slack.com/services/T000/A000/other-alerts",
+                channel_webhook_url="https://hooks.slack.com/services/T000/FAKEFAKE/other-alerts",
             ),
         ]
 

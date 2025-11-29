@@ -32,11 +32,11 @@ class ExtendedSlackNotificationService(SlackNotificationService):
 channel_configs = [
     SlackChannelConfig(
         channel_reference="alerts",
-        channel_webhook_url="https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX",
+        channel_webhook_url="https://hooks.slack.com/services/T00000000/B00000000/FAKEFAKEFAKEFAKEFAKEFAKE",
     ),
     SlackChannelConfig(
         channel_reference="notifications",
-        channel_webhook_url="https://hooks.slack.com/services/T00000000/B00000000/YYYYYYYYYYYYYYYYYYYYYYYY",
+        channel_webhook_url="https://hooks.slack.com/services/T00000000/B00000000/FAKEFAKEFAKEFAKEFAKEFAKE",
     ),
 ]
 
