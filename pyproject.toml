@@ -1,0 +1,49 @@
+[project]
+name = "slack-notifications-python"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "M-Jeffryes",email = "michael@maleboxhealth.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "poethepoet (>=0.38.0,<0.39.0)",
+    "slack-sdk (>=3.39.0,<4.0.0)"
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+lint.select = ["E", "F", "W", "I", "B"]  # style, bugs, imports, etc.
+lint.ignore = ["E203"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.ruff.lint.isort]
+known-first-party = ["SlackNotifications"]
+
+[tool.mypy]
+python_version = "3.11"
+disallow_untyped_defs = true
+ignore_missing_imports = true
+
+[tool.poe.tasks]
+format = "ruff format ."
+lint = "ruff check ."
+type-check = "mypy . --strict --explicit-package-bases"
+test = "pytest -s tests --log-level=DEBUG"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "ipykernel (>=7.1.0,<8.0.0)",
+    "pytest (>=9.0.1,<10.0.0)",
+    "ruff (>=0.14.7,<0.15.0)",
+    "mypy (>=1.19.0,<2.0.0)",
+    "pre-commit (>=4.5.0,<5.0.0)"
+]
