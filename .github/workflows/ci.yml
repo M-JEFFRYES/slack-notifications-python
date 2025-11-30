@@ -38,4 +38,5 @@ jobs:
               run: poe type-check
 
             - name: Run tests
-              run: poe test
+              # run: poe test
+              run: poetry run pytest -s tests --log-level=DEBUG
