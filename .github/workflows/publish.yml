@@ -22,7 +22,7 @@ jobs:
                   pip install poetry
                   poetry config virtualenvs.create false
 
-            - name: Install deps (if needed)
+            - name: Install dependencies
               run: poetry install --no-interaction --no-root
 
             - name: Build package
@@ -30,5 +30,7 @@ jobs:
 
             - name: Publish to PyPI
               uses: pypa/gh-action-pypi-publish@release/v1
+              with:
+                  repository-url: https://test.pypi.org/legacy/
               # with:
               # No password/token needed if trusted publisher configured on PyPI
