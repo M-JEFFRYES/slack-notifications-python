@@ -1,24 +1,31 @@
 [tool.poetry]
 name = "slack-notifications-python"
-version = "0.1.0"
+version = "0.0.0"
 description = ""
 authors = ["M-Jeffryes <michael@maleboxhealth.com>"]
 readme = "README.md"
 packages = [{include = "SlackNotifications"}]
 
-[project]
-name = "slack-notifications-python"
-version = "0.1.0"
-description = ""
-authors = [
-    {name = "M-Jeffryes",email = "michael@maleboxhealth.com"}
-]
-readme = "README.md"
-requires-python = ">=3.11"
-dependencies = [
-    "poethepoet (>=0.38.0,<0.39.0)",
-    "slack-sdk (>=3.39.0,<4.0.0)"
-]
+[tool.poetry.dependencies]
+python = ">=3.11"
+poethepoet = ">=0.38.0,<0.39.0"
+"slack-sdk" = ">=3.39.0,<4.0.0"
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = ">=7.1.0,<8.0.0"
+pytest = ">=9.0.1,<10.0.0"
+ruff = ">=0.14.7,<0.15.0"
+mypy = ">=1.19.0,<2.0.0"
+pre-commit = ">=4.5.0,<5.0.0"
+
+[tool.poetry-dynamic-versioning]
+enable = true
+vcs = "git"
+style = "semver"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
 line-length = 100
@@ -42,16 +49,3 @@ format = "ruff format ."
 lint = "ruff check ."
 type-check = "mypy . --strict --explicit-package-bases"
 test = "pytest -s tests --log-level=DEBUG"
-
-[build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
-build-backend = "poetry.core.masonry.api"
-
-[dependency-groups]
-dev = [
-    "ipykernel (>=7.1.0,<8.0.0)",
-    "pytest (>=9.0.1,<10.0.0)",
-    "ruff (>=0.14.7,<0.15.0)",
-    "mypy (>=1.19.0,<2.0.0)",
-    "pre-commit (>=4.5.0,<5.0.0)"
-]
