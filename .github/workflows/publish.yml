@@ -1,0 +1,31 @@
+name: Publish to PyPI
+
+on:
+    push:
+        tags:
+            - 'v*' # matches tags like v1.0.0
+
+jobs:
+    build-and-publish:
+        permissions:
+            id-token: write # Required for trusted publishing
+
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-python@v5
+              with:
+                  python-version: '3.11'
+
+            - name: Install Poetry
+              run: |
+                  pip install poetry
+                  poetry config virtualenvs.create false
+
+            - name: Install deps (if needed)
+              run: poetry install --no-interaction --no-root
+
+            - name: Publish to PyPI
+              uses: pypa/gh-action-pypi-publish@release/v1
+              with:
+                  # No password/token needed if trusted publisher configured on PyPI
