@@ -25,8 +25,12 @@ jobs:
               run: |
                   poetry install --no-interaction --no-root
 
-            - name: Generate _version.py with pip editable install
-              run: pip install -e .
+            - name: Generate _version.py for tests
+              run: |
+                  cat > SlackNotifications/_version.py << EOF
+                  def get_versions():
+                      return {"version": "0.0.0-dev"}
+                  EOF
 
             - name: Lint repository
               run: poe lint
