@@ -28,7 +28,9 @@ jobs:
             - name: Generate _version.py for tests
               run: |
                   cat > SlackNotifications/_version.py << EOF
-                  def get_versions():
+                  from typing import Dict
+
+                  def get_versions() -> Dict[str, str]:
                       return {"version": "0.0.0-dev"}
                   EOF
 
