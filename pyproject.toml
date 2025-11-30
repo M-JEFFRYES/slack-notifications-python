@@ -1,6 +1,5 @@
 [tool.poetry]
 name = "slack-notifications-python"
-version = "0.1.0"
 description = ""
 authors = ["M-Jeffryes <michael@maleboxhealth.com>"]
 readme = "README.md"
@@ -8,7 +7,6 @@ packages = [{include = "SlackNotifications"}]
 
 [project]
 name = "slack-notifications-python"
-version = "0.1.0"
 description = ""
 authors = [
     {name = "M-Jeffryes",email = "michael@maleboxhealth.com"}
@@ -44,8 +42,11 @@ type-check = "mypy . --strict --explicit-package-bases"
 test = "pytest -s tests --log-level=DEBUG"
 
 [build-system]
-requires = ["poetry-core>=2.0.0,<3.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core>=1.0.0", "setuptools_scm>=7.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools_scm]
+write_to = "SlackNotifications/_version.py"
 
 [dependency-groups]
 dev = [
