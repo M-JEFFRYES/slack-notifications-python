@@ -24,7 +24,12 @@ jobs:
             - name: Install dependencies
               run: |
                   poetry install --no-interaction --no-root
-                  pip install .
+
+            - name: Generate _version.py
+              run: poetry build
+
+            - name: Install package
+              run: pip install .
 
             - name: Lint repository
               run: poe lint
