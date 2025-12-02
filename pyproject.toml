@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "slack-notifications-python"
-version = "0.1.1"
+version = "0.1.2"
 description = ""
 authors = ["M-Jeffryes <michael@maleboxhealth.com>"]
 readme = "README.md"
@@ -22,17 +22,10 @@ pre-commit = ">=4.5.0,<5.0.0"
 enable = true
 vcs = "git"
 style = "semver"
-pattern = "v(?P<version>.+)"
-
-[tool.poetry-dynamic-versioning.substitution]
-files = ["SlackNotifications/_version.py"]
-
-[tool.poetry-dynamic-versioning.substitution.patterns]
-"SlackNotifications/_version.py" = ['(?<=__version__ = ").*(?=")']
 
 [build-system]
 requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning>=1.0.0,<2.0.0"]
-build-backend = "poetry_dynamic_versioning.backend"
+build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
 line-length = 100
