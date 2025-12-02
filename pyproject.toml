@@ -8,10 +8,10 @@ packages = [{include = "SlackNotifications"}]
 
 [tool.poetry.dependencies]
 python = ">=3.11"
-poethepoet = ">=0.38.0,<0.39.0"
 "slack-sdk" = ">=3.39.0,<4.0.0"
 
 [tool.poetry.group.dev.dependencies]
+poethepoet = ">=0.20.0,<1.0.0"
 ipykernel = ">=7.1.0,<8.0.0"
 pytest = ">=9.0.1,<10.0.0"
 ruff = ">=0.14.7,<0.15.0"
