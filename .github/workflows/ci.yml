@@ -1,44 +1,35 @@
 name: Code Quality
 
 on:
-    push:
-        branches-ignore:
-            - 'refs/tags/**'
-    pull_request:
+  push:
+    branches-ignore:
+      - "refs/tags/**"
+  pull_request:
 
 jobs:
-    lint-type-test:
-        runs-on: ubuntu-latest
+  lint-type-test:
+    runs-on: ubuntu-latest
 
-        steps:
-            - uses: actions/checkout@v4
-            - uses: actions/setup-python@v5
-              with:
-                  python-version: '3.11'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
 
-            - name: Install Poetry
-              run: |
-                  pip install poetry
-                  poetry config virtualenvs.create false
+      - name: Install Poetry
+        run: |
+          pip install poetry
+          poetry config virtualenvs.create false
 
-            - name: Install dependencies
-              run: |
-                  poetry install --no-interaction --no-root
+      - name: Install dependencies
+        run: |
+          poetry install --no-interaction --no-root
 
-            - name: Generate _version.py for tests
-              run: |
-                  cat > SlackNotifications/_version.py << EOF
-                  from typing import Dict
+      - name: Lint repository
+        run: poe lint
 
-                  def get_versions() -> Dict[str, str]:
-                      return {"version": "0.0.0-dev"}
-                  EOF
+      - name: Type-check repository
+        run: poe type-check
 
-            - name: Lint repository
-              run: poe lint
-
-            - name: Type-check repository
-              run: poe type-check
-
-            - name: Run tests
-              run: poe test
+      - name: Run tests
+        run: poe test
